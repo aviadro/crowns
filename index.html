@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>יצירות מלכותיות - כתרים מעוצבים בעבודת יד</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alef&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Alef', sans-serif;
+        line-height: 1.6;
+        color: #333;
+        direction: rtl;
+      }
+
+      nav {
+        background: linear-gradient(to right, #e6c987, #edca60);
+        color: white;
+        padding: 1rem 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: opacity 0.3s;
+      }
+
+      nav a:hover {
+        opacity: 0.8;
+      }
+
+      .hero {
+        position: relative;
+        width: 100%;
+        min-height: 100vh; /* חשוב */
+        text-align: center;
+        overflow: visible; /* מוודא שה-img לא נחתך */
+        padding: 0; /* אפשר להוסיף padding רק למטה/למעלה לפי הצורך */
+      }
+      .hero-image {
+        width: 100%;
+        height: auto;
+        display: block; /* מוודא שאין מרווחים מיותרים מעל/מתחת */
+        object-fit: contain; /* אם רוצים לשמור יחס מימדים */
+      }
+
+      /* .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+      } */
+
+      .btn {
+        background: rgb(167, 183, 187);
+        color: #8b6f9e;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        transition: transform 0.3s;
+        font-weight: bold;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      section {
+        padding: 3rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      section:nth-child(even) {
+        background: #f9f9f9;
+      }
+
+      h2 {
+        color: #8b6f9e;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .packages {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .package-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .package-card h3 {
+        color: #d4af37;
+        margin-bottom: 1rem;
+        font-size: 1.8rem;
+      }
+
+      .package-card ul {
+        list-style: none;
+        margin: 1.5rem 0;
+        text-align: right;
+      }
+
+      .package-card li {
+        padding: 0.5rem 0;
+        padding-right: 1.5rem;
+        position: relative;
+      }
+
+      .package-card li:before {
+        content: '✓';
+        position: absolute;
+        right: 0;
+        color: #8b6f9e;
+        font-weight: bold;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+
+      .gallery-item {
+        aspect-ratio: 1;
+        background: #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        color: #8b6f9e;
+      }
+
+      input[type='text'],
+      input[type='email'],
+      input[type='tel'],
+      input[type='date'],
+      textarea,
+      select {
+        width: 100%;
+        padding: 0.8rem;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-family: inherit;
+      }
+
+      textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      .file-upload {
+        border: 2px dashed #8b6f9e;
+        padding: 2rem;
+        text-align: center;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .file-upload:hover {
+        background: #f5f5f5;
+      }
+
+      .file-preview {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+      }
+
+      .file-preview img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+
+      .contract-box {
+        background: #fff3cd;
+        padding: 2rem;
+        border-right: 4px solid #d4af37;
+        margin: 2rem 0;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .step {
+        text-align: center;
+      }
+
+      .step-number {
+        width: 50px;
+        height: 50px;
+        background: #8b6f9e;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 0 auto 1rem;
+      }
+
+      .review-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .review-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .review-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 8px;
+        object-fit: cover;
+      }
+
+      footer {
+        background: #333;
+        color: white;
+        text-align: center;
+        padding: 2rem;
+      }
+
+      @media (max-width: 768px) {
+        nav ul {
+          gap: 1rem;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        h2 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="crown_website.html">English</a></li>
+        <li><a href="#home">בית</a></li>
+        <li><a href="#about">אודות</a></li>
+        <li><a href="#gallery">גלריה</a></li>
+        <li><a href="#packages">חבילות</a></li>
+        <li><a href="#how-to-order">איך מזמינים ?</a></li>
+        <li><a href="#order-form">הזמנת כתר</a></li>
+        <li><a href="#reviews">המלצות</a></li>
+        <li><a href="#contract">תקנון</a></li>
+      </ul>
+    </nav>
+
+    <div id="home" class="hero">
+      <img src="images/bg.jpeg" alt="" class="hero-image" />
+
+      <!-- <h1 style="letter-spacing: 0.15em; font-weight: 400;">
+            הַמְּכַּתֶּרֶת
+        </h1>
+                <p>כתרים מעוצבים בעבודת יד לכל סיבה ואירוע</p> -->
+      <!-- <a href="#order-form" class="btn">הזמני את הכתר שלך</a> -->
+    </div>
+
+    <section id="about">
+      <h2>אודותיי והסיפור מאחורי העסק</h2>
+      <p
+        style="
+          text-align: center;
+          max-width: 800px;
+          margin: 0 auto;
+          font-size: 1.1rem;
+          line-height: 1.8;
+        "
+      >
+        ברוכים הבאים להמכתרת! שמי ישראלה רויכמן, ואני יוצרת כתרים מעוצבים בעבודת
+        יד כבר למעלה מ-[X] שנים. מה שהתחיל כתשוקה לחגוג רגעים מיוחדים הפך לעסק
+        המוקדש לגרום לכל אדם להרגיש כמו מלוכה ביום החשוב שלו.
+        <br /><br />
+        כל כתר נוצר בקפידה רבה בעבודת יד, עם תשומת לב לכל פרט. אני מאמינה שכל
+        אחד ראוי להרגיש מיוחד, ואין דרך טובה יותר לחגוג את אבני הדרך בחיים מאשר
+        עם כתר מותאם אישית המשקף את האישיות והחזון הייחודיים שלך.
+        <br /><br />
+        מימי הולדת ועד חתונות, צילומים ועד פסטיבלים - אני עובדת בשיתוף פעולה
+        הדוק עם כל לקוח כדי להפוך את כתר החלומות שלו למציאות. כל יצירה מספרת
+        סיפור, ואני מתכבדת להיות חלק מהסיפור שלך.
+      </p>
+    </section>
+
+    <section id="gallery">
+      <h2>גלריית עבודות</h2>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img
+            src="https://via.placeholder.com/300x300/d4af37/ffffff?text=כתר+1"
+            alt="דוגמת כתר 1"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://via.placeholder.com/300x300/8b6f9e/ffffff?text=כתר+2"
+            alt="דוגמת כתר 2"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://via.placeholder.com/300x300/d4af37/ffffff?text=כתר+3"
+            alt="דוגמת כתר 3"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://via.placeholder.com/300x300/8b6f9e/ffffff?text=כתר+4"
+            alt="דוגמת כתר 4"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://via.placeholder.com/300x300/d4af37/ffffff?text=כתר+5"
+            alt="דוגמת כתר 5"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://via.placeholder.com/300x300/8b6f9e/ffffff?text=כתר+6"
+            alt="דוגמת כתר 6"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="packages">
+      <h2>חבילות ומחירים</h2>
+      <div class="packages">
+        <div class="package-card">
+          <h3>👑 כתר קלאסי</h3>
+          <p style="font-size: 2rem; color: #d4af37; margin: 1rem 0">₪[מחיר]</p>
+          <ul>
+            <li>כתר בעבודת יד מותאם אישית</li>
+            <li>עיצוב אישי לפי בקשה</li>
+            <li>אריזת מתנה מהודרת</li>
+            <li>מושלם לכל אירוע</li>
+          </ul>
+        </div>
+        <div class="package-card">
+          <h3>👑 כתר ומסגרת</h3>
+          <p style="font-size: 2rem; color: #d4af37; margin: 1rem 0">₪[מחיר]</p>
+          <ul>
+            <li>כתר בעבודת יד מותאם אישית</li>
+            <li>עיצוב אישי לפי בקשה</li>
+            <li>אריזת מתנה מהודרת</li>
+            <li>מסגרת תלת-ממדית לתצוגה</li>
+            <li>שימור כיצירת אמנות לנצח</li>
+          </ul>
+        </div>
+        <div class="package-card">
+          <h3>👑 סדנת יצירה</h3>
+          <p style="font-size: 2rem; color: #d4af37; margin: 1rem 0">₪[מחיר]</p>
+          <ul>
+            <li>יצירת כתר מעשית</li>
+            <li>כל החומרים כלולים</li>
+            <li>הדרכה מקצועית</li>
+            <li>לוקחים את היצירה הביתה</li>
+            <li>מושלם לקבוצות</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-to-order">
+      <h2>איך מזמינים?</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>שלחי הזמנה</h3>
+          <p>מלא את טופס ההזמנה עם הפרטים, תמונות השראה והחזון שלך</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>התייעצות</h3>
+          <p>אבדוק את ההזמנה ואצור איתך קשר כדי לדון בפרטים</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>יצירה</h3>
+          <p>אייצר את הכתר שלך בקפידה ותשומת לב לכל פרט</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>משלוח</h3>
+          <p>בחר איסוף או משלוח - הכתר יהיה מוכן תוך שבועיים ומעלה</p>
+        </div>
+      </div>
+      <div
+        style="
+          background: #f0f0f0;
+          padding: 2rem;
+          border-radius: 8px;
+          margin-top: 3rem;
+          text-align: center;
+        "
+      >
+        <p style="font-size: 1.2rem; margin-bottom: 1rem">
+          <strong>חשוב:</strong> כל ההזמנות דורשות הודעה מוקדמת של לפחות שבועיים
+          כדי להבטיח איכות גבוהה.
+        </p>
+      </div>
+    </section>
+
+    <section id="order-form">
+      <h2>הזמנת כתר</h2>
+      <form
+        id="crownOrderForm"
+        action="https://formspree.io/f/mkooekow"
+        method="POST"
+        enctype="multipart/form-data"
+        style="max-width: 700px; margin: 0 auto"
+      >
+        <div class="form-group">
+          <label for="name">שם מלא *</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email">כתובת אימייל *</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">מספר טלפון *</label>
+          <input type="tel" id="phone" name="phone" required />
+        </div>
+
+        <div class="form-group">
+          <label for="package">בחר חבילה *</label>
+          <select id="package" name="package" required>
+            <option value="">בחר חבילה...</option>
+            <option value="classic">כתר קלאסי</option>
+            <option value="frame">כתר ומסגרת</option>
+            <option value="workshop">סדנת יצירה</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="date">תאריך נדרש * (לפחות שבועיים מהיום)</label>
+          <input type="date" id="date" name="date" required />
+        </div>
+
+        <div class="form-group">
+          <label for="delivery">שיטת מסירה *</label>
+          <select id="delivery" name="delivery" required>
+            <option value="">בחר שיטת מסירה...</option>
+            <option value="pickup">איסוף עצמי</option>
+            <option value="delivery">משלוח</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="description"
+            >החזון שלך * (ספר לי על כתר החלומות שלך, שיקולים מיוחדים, צבעים,
+            נושאים וכו')</label
+          >
+          <textarea
+            id="description"
+            name="description"
+            required
+            placeholder="תאר מה אתה מדמיין לכתר שלך..."
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>תמונות השראה * (העלאת 3 תמונות)</label>
+          <div class="file-upload" id="fileUploadArea">
+            <p>📸לחץ או גרור להעלאת 3 תמונות השראה</p>
+            <input
+              type="file"
+              id="photos"
+              name="photos"
+              accept="image/*"
+              multiple
+              style="display: none"
+              required
+            />
+          </div>
+          <div class="file-preview" id="filePreview"></div>
+        </div>
+
+        <div class="form-group">
+          <label>
+            <input
+              type="checkbox"
+              id="termsAgree"
+              required
+              style="width: auto; margin-left: 0.5rem"
+            />
+            קראתי והסכמתי ל<a href="#contract" style="color: #8b6f9e"
+              >תקנון והסכם</a
+            >
+            *
+          </label>
+        </div>
+
+        <button type="submit" class="btn" style="width: 100%; margin-top: 1rem">
+          שלח הזמנה
+        </button>
+      </form>
+    </section>
+
+    <section id="reviews">
+      <h2>המלצות לקוחות</h2>
+      <div class="review-card">
+        <div class="review-header">
+          <img
+            src="https://via.placeholder.com/100x100/8b6f9e/ffffff?text=כתר"
+            alt="כתר לקוחה"
+            class="review-img"
+          />
+          <div>
+            <h4>שרה מ.</h4>
+            <p style="color: #d4af37">⭐⭐⭐⭐⭐</p>
+          </div>
+        </div>
+        <p>
+          "פשוט מדהים! הכתר עלה על כל הציפיות שלי. תשומת הלב לפרטים הייתה
+          מדהימה, וזה עשה את יום ההולדת של הבת שלי למיוחד במיוחד. ממליצה בחום!"
+        </p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+          <img
+            src="https://via.placeholder.com/100x100/d4af37/ffffff?text=כתר"
+            alt="כתר לקוחה"
+            class="review-img"
+          />
+          <div>
+            <h4>ג'סיקה ר.</h4>
+            <p style="color: #d4af37">⭐⭐⭐⭐⭐</p>
+          </div>
+        </div>
+        <p>
+          "הזמנתי כתר לצילומי החתונה שלי והוא היה מושלם! האומנות יוצאת דופן
+          ו[השם שלך] הייתה כל כך קלה לעבוד איתה. המסגרת התלת-ממדית היא נגיעה
+          יפהפייה!"
+        </p>
+      </div>
+    </section>
+
+    <section id="contract">
+      <h2>תקנון והסכם</h2>
+      <div class="contract-box">
+        <h3 style="color: #8b6f9e; margin-bottom: 1rem">מידע חשוב</h3>
+
+        <h4 style="margin-top: 1.5rem">לוח זמנים:</h4>
+        <p>
+          כל ההזמנות דורשות הודעה מוקדמת של לפחות שבועיים. הזמנות דחופות ניתן
+          לתאם בתוספת תשלום.
+        </p>
+
+        <h4 style="margin-top: 1.5rem">מה כלול:</h4>
+        <ul style="margin-right: 2rem; margin-top: 0.5rem">
+          <li>כתר אחד בעבודת יד מותאם אישית לפי המפרט שלך</li>
+          <li>אריזת מתנה מהודרת (חבילת כתר קלאסי)</li>
+          <li>מסגרת תצוגה תלת-ממדית (חבילת כתר ומסגרת)</li>
+          <li>כל חומרי הסדנה (חבילת סדנה)</li>
+        </ul>
+
+        <h4 style="margin-top: 1.5rem">חומרים:</h4>
+        <p>
+          כל הכתרים עשויים מחומרים איכותיים כולל [רשימת החומרים הרגילים שלך:
+          חוטים, פרחים, קריסטלים, בדים וכו']. ניתן לדון בחומרים ספציפיים במהלך
+          ההתייעצות.
+        </p>
+
+        <h4 style="margin-top: 1.5rem">תשלום:</h4>
+        <p>
+          נדרשת מקדמה של 50% כדי להתחיל בעבודה, כאשר היתרה משולמת עם השלמת
+          העבודה לפני איסוף/משלוח.
+        </p>
+
+        <h4 style="margin-top: 1.5rem">מדיניות ביטול:</h4>
+        <p>
+          מקדמות אינן ניתנות להחזר לאחר שהעבודה החלה. ביטולים שנעשו 48+ שעות
+          לפני התאריך המתוכנן לסיום עשויים לקבל החזר חלקי.
+        </p>
+
+        <h4 style="margin-top: 1.5rem">הוראות טיפול:</h4>
+        <p>
+          כל כתר מגיע עם הוראות טיפול שיסייעו לשמור על יופיו. טיפול זהיר ואחסון
+          בקופסה המצורפת כאשר לא בשימוש.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 יצירות מלכותיות - כתרים מעוצבים בעבודת יד</p>
+      <p>ליצירת קשר: [האימייל שלך] | [הטלפון שלך]</p>
+    </footer>
+
+    <script>
+      // הגדרת תאריך מינימלי לשבועיים מהיום
+      const dateInput = document.getElementById('date')
+      const today = new Date()
+      const minDate = new Date(today.setDate(today.getDate() + 14))
+      dateInput.min = minDate.toISOString().split('T')[0]
+
+      // טיפול בהעלאת קבצים
+      const fileUploadArea = document.getElementById('fileUploadArea')
+      const fileInput = document.getElementById('photos')
+      const filePreview = document.getElementById('filePreview')
+
+      let selectedFiles = []
+
+      fileUploadArea.addEventListener('click', () => fileInput.click())
+
+      fileInput.addEventListener('change', function (e) {
+        const newFiles = Array.from(e.target.files)
+
+        if (selectedFiles.length + newFiles.length > 3) {
+          alert('ניתן להעלות עד 3 תמונות השראה בלבד')
+          fileInput.value = ''
+          return
+        }
+
+        newFiles.forEach((file) => {
+          selectedFiles.push(file)
+
+          const reader = new FileReader()
+          reader.onload = function (e) {
+            const img = document.createElement('img')
+            img.src = e.target.result
+            filePreview.appendChild(img)
+          }
+          reader.readAsDataURL(file)
+        })
+
+        // מאפשר לבחור שוב קבצים
+        fileInput.value = ''
+      })
+
+      // שליחת טופס
+      document
+        .getElementById('crownOrderForm')
+        .addEventListener('submit', function (e) {
+          // לפחות תמונה אחת
+          if (selectedFiles.length === 0) {
+            e.preventDefault()
+            alert('נא להעלות לפחות תמונת השראה אחת')
+            return
+          }
+
+          // הגנה נוספת – לא יותר מ-3
+          if (selectedFiles.length > 3) {
+            e.preventDefault()
+            alert('ניתן להעלות עד 3 תמונות השראה בלבד')
+            return
+          }
+
+          // הודעת הצלחה (Formspree כן ישלח)
+          alert('תודה על ההזמנה! אצור איתך קשר תוך 24 שעות 💜')
+        })
+
+      // גלילה חלקה לניווט
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault()
+          const target = document.querySelector(this.getAttribute('href'))
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }
+        })
+      })
+    </script>
+  </body>
+</html>
