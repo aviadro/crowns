@@ -546,7 +546,6 @@
               accept="image/*"
               multiple
               style="display: none"
-              required
             />
           </div>
           <div class="file-preview" id="filePreview"></div>
@@ -722,7 +721,9 @@
             alert('ניתן להעלות עד 3 תמונות השראה בלבד')
             return
           }
-
+          const dataTransfer = new DataTransfer()
+          selectedFiles.forEach((file) => dataTransfer.items.add(file))
+          fileInput.files = dataTransfer.files
           // הודעת הצלחה (Formspree כן ישלח)
           alert('תודה על ההזמנה! אצור איתך קשר תוך 24 שעות 💜')
         })
