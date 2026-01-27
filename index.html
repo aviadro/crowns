@@ -41,7 +41,7 @@
         nav {
           background-size: contain;
           padding: 0.5rem 1rem;
-          background-color: #F5A623; 
+          background-color: #f5a623;
         }
       }
 
@@ -65,19 +65,11 @@
       }
 
       .hero {
-        position: relative;
-        width: 100%;
-        min-height: 100vh; /* חשוב */
-        height: auto;
-        text-align: center;
-        overflow: visible; /* מוודא שה-img לא נחתך */
-        padding: 0; /* אפשר להוסיף padding רק למטה/למעלה לפי הצורך */
-      }
-      .hero-image {
-        width: 100%;
-        height: auto;
-        display: block; /* מוודא שאין מרווחים מיותרים מעל/מתחת */
-        object-fit: contain; /* אם רוצים לשמור יחס מימדים */
+        background-image: url('images/bg.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 100vh;
       }
 
       /* .hero h1 {
@@ -334,7 +326,7 @@
     </nav>
 
     <div id="home" class="hero">
-      <img src="images/bg.png" alt="" class="hero-image" />
+      <!-- <img src="images/bg.png" alt="" class="hero-image" /> -->
 
       <!-- <h1 style="letter-spacing: 0.15em; font-weight: 400;">
             הַמְּכַּתֶּרֶת
