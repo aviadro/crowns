@@ -1,617 +1,756 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Royal Creations - Handmade Personalized Crowns</title>
-    <link rel="icon" href="favicon.png" type="image/png">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crowning - Handmade Personalized Crowns</title>
+    <link rel="icon" href="favicon.png" type="image/png" />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: #333;
-        }
+      body {
+        font-family: 'Georgia', serif;
+        line-height: 1.6;
+        color: #333;
+      }
 
-        nav {
-            background: #8b6f9e;
-            color: white;
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+      nav {
+        background: #8b6f9e;
+        color: white;
+        padding: 1rem 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
 
+      nav ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: opacity 0.3s;
+      }
+
+      nav a:hover {
+        opacity: 0.8;
+      }
+
+      .hero {
+        background: linear-gradient(135deg, #d4af37 0%, #8b6f9e 100%);
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+      }
+
+      .btn {
+        background: white;
+        color: #8b6f9e;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        transition: transform 0.3s;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      section {
+        padding: 3rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      section:nth-child(even) {
+        background: #f9f9f9;
+      }
+
+      h2 {
+        color: #8b6f9e;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .packages {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .package-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .package-card h3 {
+        color: #d4af37;
+        margin-bottom: 1rem;
+        font-size: 1.8rem;
+      }
+
+      .package-card ul {
+        list-style: none;
+        margin: 1.5rem 0;
+        text-align: left;
+      }
+
+      .package-card li {
+        padding: 0.5rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+      }
+
+      .package-card li:before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: #8b6f9e;
+        font-weight: bold;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+
+      .gallery-item {
+        aspect-ratio: 1;
+        background: #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        color: #8b6f9e;
+      }
+
+      input[type='text'],
+      input[type='email'],
+      input[type='date'],
+      textarea,
+      select {
+        width: 100%;
+        padding: 0.8rem;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-family: inherit;
+      }
+
+      textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      .file-upload {
+        border: 2px dashed #8b6f9e;
+        padding: 2rem;
+        text-align: center;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .file-upload:hover {
+        background: #f5f5f5;
+      }
+
+      .file-preview {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+      }
+
+      .file-preview img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+
+      .contract-box {
+        background: #fff3cd;
+        padding: 2rem;
+        border-left: 4px solid #d4af37;
+        margin: 2rem 0;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .step {
+        text-align: center;
+      }
+
+      .step-number {
+        width: 50px;
+        height: 50px;
+        background: #8b6f9e;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 0 auto 1rem;
+      }
+
+      .review-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .review-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .review-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 8px;
+        object-fit: cover;
+      }
+
+      footer {
+        background: #333;
+        color: white;
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      @media (max-width: 768px) {
         nav ul {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: opacity 0.3s;
-        }
-
-        nav a:hover {
-            opacity: 0.8;
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #d4af37 0%, #8b6f9e 100%);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
+          gap: 1rem;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            background: white;
-            color: #8b6f9e;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: transform 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-
-        section {
-            padding: 3rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        section:nth-child(even) {
-            background: #f9f9f9;
+          font-size: 2rem;
         }
 
         h2 {
-            color: #8b6f9e;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            text-align: center;
+          font-size: 2rem;
         }
-
-        .packages {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .package-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .package-card h3 {
-            color: #d4af37;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-
-        .package-card ul {
-            list-style: none;
-            margin: 1.5rem 0;
-            text-align: left;
-        }
-
-        .package-card li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .package-card li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #8b6f9e;
-            font-weight: bold;
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-
-        .gallery-item {
-            aspect-ratio: 1;
-            background: #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: #8b6f9e;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="date"],
-        textarea,
-        select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-family: inherit;
-        }
-
-        textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .file-upload {
-            border: 2px dashed #8b6f9e;
-            padding: 2rem;
-            text-align: center;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .file-upload:hover {
-            background: #f5f5f5;
-        }
-
-        .file-preview {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-        }
-
-        .file-preview img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-
-        .contract-box {
-            background: #fff3cd;
-            padding: 2rem;
-            border-left: 4px solid #d4af37;
-            margin: 2rem 0;
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .step {
-            text-align: center;
-        }
-
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: #8b6f9e;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0 auto 1rem;
-        }
-
-        .review-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .review-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .review-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 8px;
-            object-fit: cover;
-        }
-
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            nav ul {
-                gap: 1rem;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            h2 {
-                font-size: 2rem;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#packages">Packages</a></li>
-            <li><a href="#how-to-order">How to Order</a></li>
-            <li><a href="#order-form">Place Order</a></li>
-            <li><a href="#reviews">Reviews</a></li>
-            <li><a href="#contract">Terms</a></li>
-            <li><a href="index.html">עברית</a></li>
-        </ul>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#packages">Packages</a></li>
+        <li><a href="#how-to-order">How to Order</a></li>
+        <li><a href="#order-form">Place Order</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contract">Terms</a></li>
+        <li><a href="index.html">עברית</a></li>
+      </ul>
     </nav>
 
     <div id="home" class="hero">
-        <h1>✨ Royal Creations ✨</h1>
-        <p>Handcrafted Personalized Crowns for Every Special Occasion</p>
-        <a href="#order-form" class="btn">Order Your Crown</a>
+      <h1>Crowning</h1>
+      <p>Handcrafted Personalized Crowns for Every Special Occasion</p>
+      <a href="#order-form" class="btn">Order Your Crown</a>
     </div>
 
     <section id="about">
-        <h2>About Me & My Story</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8;">
-            Welcome to Royal Creations! My name is [Your Name], and I've been creating personalized handmade crowns for over [X] years. What started as a passion for celebrating special moments has blossomed into a business dedicated to making every person feel like royalty on their important day.
-            <br><br>
-            Each crown is meticulously crafted by hand, with attention to every detail. I believe that everyone deserves to feel special, and there's no better way to celebrate life's milestones than with a custom-made crown that reflects your unique personality and vision.
-            <br><br>
-            From birthdays to weddings, photoshoots to festivals, I work closely with each client to bring their dream crown to life. Every piece tells a story, and I'm honored to be part of yours.
-        </p>
+      <h2>About Me & My Story</h2>
+      <p
+        style="
+          text-align: center;
+          max-width: 800px;
+          margin: 0 auto;
+          font-size: 1.1rem;
+          line-height: 1.8;
+        "
+      >
+        <em>Crowning</em> was born from a childhood dream — a place where every
+        gift is personalized, one-of-a-kind, and creative. In every crown, I
+        tell your story: a birthday celebration, graduation, returning from a
+        big trip, or another meaningful moment. <br /><br />
+        The crown is worn, experienced, and becomes a unique photographic
+        moment.
+        <br /><br />
+        A work of art that stays with you even after the event is over — as a
+        keepsake.
+      </p>
     </section>
 
     <section id="gallery">
-        <h2>Gallery</h2>
-        <div class="gallery">
-            <div class="gallery-item">
-                <img src="https://via.placeholder.com/300x300/d4af37/ffffff?text=Crown+1" alt="Crown example 1">
-            </div>
-            <div class="gallery-item">
-                <img src="https://via.placeholder.com/300x300/8b6f9e/ffffff?text=Crown+2" alt="Crown example 2">
-            </div>
-            <div class="gallery-item">
-                <img src="https://via.placeholder.com/300x300/d4af37/ffffff?text=Crown+3" alt="Crown example 3">
-            </div>
-            <div class="gallery-item">
-                <img src="https://via.placeholder.com/300x300/8b6f9e/ffffff?text=Crown+4" alt="Crown example 4">
-            </div>
-            <div class="gallery-item">
-                <img src="https://via.placeholder.com/300x300/d4af37/ffffff?text=Crown+5" alt="Crown example 5">
-            </div>
-            <div class="gallery-item">
-                <img src="https://via.placeholder.com/300x300/8b6f9e/ffffff?text=Crown+6" alt="Crown example 6">
-            </div>
+      <h2>Gallery</h2>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img
+            src="https://via.placeholder.com/300x300/d4af37/ffffff?text=Crown+1"
+            alt="Crown example 1"
+          />
         </div>
+        <div class="gallery-item">
+          <img
+            src="https://via.placeholder.com/300x300/8b6f9e/ffffff?text=Crown+2"
+            alt="Crown example 2"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://via.placeholder.com/300x300/d4af37/ffffff?text=Crown+3"
+            alt="Crown example 3"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://via.placeholder.com/300x300/8b6f9e/ffffff?text=Crown+4"
+            alt="Crown example 4"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://via.placeholder.com/300x300/d4af37/ffffff?text=Crown+5"
+            alt="Crown example 5"
+          />
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://via.placeholder.com/300x300/8b6f9e/ffffff?text=Crown+6"
+            alt="Crown example 6"
+          />
+        </div>
+      </div>
     </section>
 
     <section id="packages">
-        <h2>Packages & Pricing</h2>
-        <div class="packages">
-            <div class="package-card">
-                <h3>👑 Classic Crown</h3>
-                <p style="font-size: 2rem; color: #d4af37; margin: 1rem 0;">$[Price]</p>
-                <ul>
-                    <li>Custom handmade crown</li>
-                    <li>Personalized design</li>
-                    <li>Beautiful gift box</li>
-                    <li>Perfect for any occasion</li>
-                </ul>
-            </div>
-            <div class="package-card">
-                <h3>👑 Crown & Frame</h3>
-                <p style="font-size: 2rem; color: #d4af37; margin: 1rem 0;">$[Price]</p>
-                <ul>
-                    <li>Custom handmade crown</li>
-                    <li>Personalized design</li>
-                    <li>Beautiful gift box</li>
-                    <li>3D display frame</li>
-                    <li>Preserve as art forever</li>
-                </ul>
-            </div>
-            <div class="package-card">
-                <h3>👑 Workshop Experience</h3>
-                <p style="font-size: 2rem; color: #d4af37; margin: 1rem 0;">$[Price]</p>
-                <ul>
-                    <li>Hands-on crown making</li>
-                    <li>All materials included</li>
-                    <li>Expert guidance</li>
-                    <li>Take home your creation</li>
-                    <li>Perfect for groups</li>
-                </ul>
-            </div>
+      <h2>Packages & Pricing</h2>
+      <div class="packages">
+        <div class="package-card">
+          <h3>👑 Classic Crown</h3>
+          <p style="font-size: 2rem; color: #d4af37; margin: 1rem 0">
+            $[Price]
+          </p>
+          <ul>
+            <li>Custom handmade crown</li>
+            <li>Personalized design</li>
+            <li>Beautiful gift box</li>
+            <li>Perfect for any occasion</li>
+          </ul>
         </div>
+        <div class="package-card">
+          <h3>👑 Crown & Frame</h3>
+          <p style="font-size: 2rem; color: #d4af37; margin: 1rem 0">
+            $[Price]
+          </p>
+          <ul>
+            <li>Custom handmade crown</li>
+            <li>Personalized design</li>
+            <li>Beautiful gift box</li>
+            <li>3D display frame</li>
+            <li>Preserve as art forever</li>
+          </ul>
+        </div>
+        <div class="package-card">
+          <h3>👑 Workshop Experience</h3>
+          <p style="font-size: 2rem; color: #d4af37; margin: 1rem 0">
+            $[Price]
+          </p>
+          <ul>
+            <li>Hands-on crown making</li>
+            <li>All materials included</li>
+            <li>Expert guidance</li>
+            <li>Take home your creation</li>
+            <li>Perfect for groups</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <section id="how-to-order">
-        <h2>How to Order</h2>
-        <div class="steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <h3>Submit Your Order</h3>
-                <p>Fill out the order form with your details, inspiration photos, and vision</p>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <h3>Consultation</h3>
-                <p>I'll review your submission and contact you to discuss details</p>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <h3>Creation</h3>
-                <p>I'll handcraft your crown with care and attention to every detail</p>
-            </div>
-            <div class="step">
-                <div class="step-number">4</div>
-                <h3>Delivery</h3>
-                <p>Choose pickup or delivery - your crown will be ready in 2+ weeks</p>
-            </div>
+      <h2>How to Order</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Submit Your Order</h3>
+          <p>
+            Fill out the order form with your details, inspiration photos, and
+            vision
+          </p>
         </div>
-        <div style="background: #f0f0f0; padding: 2rem; border-radius: 8px; margin-top: 3rem; text-align: center;">
-            <p style="font-size: 1.2rem; margin-bottom: 1rem;"><strong>Important:</strong> All orders require at least 2 weeks advance notice to ensure quality craftsmanship.</p>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Consultation</h3>
+          <p>I'll review your submission and contact you to discuss details</p>
         </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Creation</h3>
+          <p>
+            I'll handcraft your crown with care and attention to every detail
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>Delivery</h3>
+          <p>
+            Choose pickup or delivery - your crown will be ready in 2+ weeks
+          </p>
+        </div>
+      </div>
+      <div
+        style="
+          background: #f0f0f0;
+          padding: 2rem;
+          border-radius: 8px;
+          margin-top: 3rem;
+          text-align: center;
+        "
+      >
+        <p style="font-size: 1.2rem; margin-bottom: 1rem">
+          <strong>Important:</strong> All orders require at least 2 weeks
+          advance notice to ensure quality craftsmanship.
+        </p>
+      </div>
     </section>
 
     <section id="order-form">
-        <h2>Place Your Order</h2>
-        <form id="crownOrderForm" style="max-width: 700px; margin: 0 auto;">
-            <div class="form-group">
-                <label for="name">Full Name *</label>
-                <input type="text" id="name" name="name" required>
-            </div>
+      <h2>Place Your Order</h2>
+      <form id="crownOrderForm" style="max-width: 700px; margin: 0 auto">
+        <div class="form-group">
+          <label for="name">Full Name *</label>
+          <input type="text" id="name" name="name" required />
+        </div>
 
-            <div class="form-group">
-                <label for="email">Email Address *</label>
-                <input type="email" id="email" name="email" required>
-            </div>
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" required />
+        </div>
 
-            <div class="form-group">
-                <label for="phone">Phone Number *</label>
-                <input type="text" id="phone" name="phone" required>
-            </div>
+        <div class="form-group">
+          <label for="phone">Phone Number *</label>
+          <input type="text" id="phone" name="phone" required />
+        </div>
 
-            <div class="form-group">
-                <label for="package">Select Package *</label>
-                <select id="package" name="package" required>
-                    <option value="">Choose a package...</option>
-                    <option value="classic">Classic Crown</option>
-                    <option value="frame">Crown & Frame</option>
-                    <option value="workshop">Workshop Experience</option>
-                </select>
-            </div>
+        <div class="form-group">
+          <label for="package">Select Package *</label>
+          <select id="package" name="package" required>
+            <option value="">Choose a package...</option>
+            <option value="classic">Classic Crown</option>
+            <option value="frame">Crown & Frame</option>
+            <option value="workshop">Workshop Experience</option>
+          </select>
+        </div>
 
-            <div class="form-group">
-                <label for="date">Needed By Date * (Minimum 2 weeks from today)</label>
-                <input type="date" id="date" name="date" required>
-            </div>
+        <div class="form-group">
+          <label for="date"
+            >Needed By Date * (Minimum 2 weeks from today)</label
+          >
+          <input type="date" id="date" name="date" required />
+        </div>
 
-            <div class="form-group">
-                <label for="delivery">Delivery Method *</label>
-                <select id="delivery" name="delivery" required>
-                    <option value="">Choose delivery method...</option>
-                    <option value="pickup">Pickup</option>
-                    <option value="delivery">Delivery</option>
-                </select>
-            </div>
+        <div class="form-group">
+          <label for="delivery">Delivery Method *</label>
+          <select id="delivery" name="delivery" required>
+            <option value="">Choose delivery method...</option>
+            <option value="pickup">Pickup</option>
+            <option value="delivery">Delivery</option>
+          </select>
+        </div>
 
-            <div class="form-group">
-                <label for="description">Your Vision * (Tell me about your dream crown, special considerations, colors, themes, etc.)</label>
-                <textarea id="description" name="description" required placeholder="Describe what you envision for your crown..."></textarea>
-            </div>
+        <div class="form-group">
+          <label for="description"
+            >Your Vision * (Tell me about your dream crown, special
+            considerations, colors, themes, etc.)</label
+          >
+          <textarea
+            id="description"
+            name="description"
+            required
+            placeholder="Describe what you envision for your crown..."
+          ></textarea>
+        </div>
 
-            <div class="form-group">
-                <label>Inspiration Photos * (Upload 3 photos)</label>
-                <div class="file-upload" id="fileUploadArea">
-                    <p>📸 Click or drag to upload 3 inspiration photos</p>
-                    <input type="file" id="photos" name="photos" accept="image/*" multiple style="display: none;" required>
-                </div>
-                <div class="file-preview" id="filePreview"></div>
-            </div>
+        <!-- <div class="form-group">
+          <label>Inspiration Photos * (Upload 3 photos)</label>
+          <div class="file-upload" id="fileUploadArea">
+            <p>📸 Click or drag to upload 3 inspiration photos</p>
+            <input
+              type="file"
+              id="photos"
+              name="photos"
+              accept="image/*"
+              multiple
+              style="display: none"
+              required
+            />
+          </div>
+          <div class="file-preview" id="filePreview"></div>
+        </div> -->
 
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="termsAgree" required style="width: auto; margin-right: 0.5rem;">
-                    I have read and agree to the <a href="#contract" style="color: #8b6f9e;">Terms & Contract</a> *
-                </label>
-            </div>
+        <a
+          href="https://forms.gle/S78vhWBNFvQbBVY58"
+          target="_blank"
+          style="
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #673ab7;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+          "
+        >
+          📸 upload up to 3 inspiration photos
+        </a>
 
-            <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">Submit Order</button>
-        </form>
+        <div class="form-group">
+          <label>
+            <input
+              type="checkbox"
+              id="termsAgree"
+              required
+              style="width: auto; margin-right: 0.5rem"
+            />
+            I have read and agree to the
+            <a href="#contract" style="color: #8b6f9e">Terms & Contract</a> *
+          </label>
+        </div>
+
+        <button type="submit" class="btn" style="width: 100%; margin-top: 1rem">
+          Submit Order
+        </button>
+      </form>
     </section>
 
     <section id="reviews">
-        <h2>Customer Reviews</h2>
-        <div class="review-card">
-            <div class="review-header">
-                <img src="https://via.placeholder.com/100x100/8b6f9e/ffffff?text=Crown" alt="Customer crown" class="review-img">
-                <div>
-                    <h4>Sarah M.</h4>
-                    <p style="color: #d4af37;">⭐⭐⭐⭐⭐</p>
-                </div>
-            </div>
-            <p>"Absolutely stunning! The crown exceeded all my expectations. The attention to detail was incredible, and it made my daughter's birthday so special. Highly recommend!"</p>
+      <h2>Customer Reviews</h2>
+      <div class="review-card">
+        <div class="review-header">
+          <img
+            src="https://via.placeholder.com/100x100/8b6f9e/ffffff?text=Crown"
+            alt="Customer crown"
+            class="review-img"
+          />
+          <div>
+            <h4>Sarah M.</h4>
+            <p style="color: #d4af37">⭐⭐⭐⭐⭐</p>
+          </div>
         </div>
+        <p>
+          "Absolutely stunning! The crown exceeded all my expectations. The
+          attention to detail was incredible, and it made my daughter's birthday
+          so special. Highly recommend!"
+        </p>
+      </div>
 
-        <div class="review-card">
-            <div class="review-header">
-                <img src="https://via.placeholder.com/100x100/d4af37/ffffff?text=Crown" alt="Customer crown" class="review-img">
-                <div>
-                    <h4>Jessica R.</h4>
-                    <p style="color: #d4af37;">⭐⭐⭐⭐⭐</p>
-                </div>
-            </div>
-            <p>"I ordered a crown for my wedding photoshoot and it was perfection! The craftsmanship is outstanding and [Your Name] was so easy to work with. The 3D frame is a beautiful touch!"</p>
+      <div class="review-card">
+        <div class="review-header">
+          <img
+            src="https://via.placeholder.com/100x100/d4af37/ffffff?text=Crown"
+            alt="Customer crown"
+            class="review-img"
+          />
+          <div>
+            <h4>Jessica R.</h4>
+            <p style="color: #d4af37">⭐⭐⭐⭐⭐</p>
+          </div>
         </div>
+        <p>
+          "I ordered a crown for my wedding photoshoot and it was perfection!
+          The craftsmanship is outstanding and [Your Name] was so easy to work
+          with. The 3D frame is a beautiful touch!"
+        </p>
+      </div>
     </section>
 
     <section id="contract">
-        <h2>Terms & Contract</h2>
-        <div class="contract-box">
-            <h3 style="color: #8b6f9e; margin-bottom: 1rem;">Important Information</h3>
-            
-            <h4 style="margin-top: 1.5rem;">Timeline:</h4>
-            <p>All orders require a minimum of 2 weeks advance notice. Rush orders may be accommodated with an additional fee.</p>
+      <h2>Terms & Contract</h2>
+      <div class="contract-box">
+        <h3 style="color: #8b6f9e; margin-bottom: 1rem">
+          Important Information
+        </h3>
 
-            <h4 style="margin-top: 1.5rem;">What's Included:</h4>
-            <ul style="margin-left: 2rem; margin-top: 0.5rem;">
-                <li>One handmade custom crown based on your specifications</li>
-                <li>Gift box packaging (Classic Crown package)</li>
-                <li>3D display frame (Crown & Frame package)</li>
-                <li>All workshop materials (Workshop package)</li>
-            </ul>
+        <h4 style="margin-top: 1.5rem">Timeline:</h4>
+        <p>
+          All orders require a minimum of 2 weeks advance notice. Rush orders
+          may be accommodated with an additional fee.
+        </p>
 
-            <h4 style="margin-top: 1.5rem;">Materials:</h4>
-            <p>All crowns are made with high-quality materials including [list your typical materials: wire, flowers, crystals, fabric, etc.]. Specific materials can be discussed during consultation.</p>
+        <h4 style="margin-top: 1.5rem">What's Included:</h4>
+        <ul style="margin-left: 2rem; margin-top: 0.5rem">
+          <li>One handmade custom crown based on your specifications</li>
+          <li>Gift box packaging (Classic Crown package)</li>
+          <li>3D display frame (Crown & Frame package)</li>
+          <li>All workshop materials (Workshop package)</li>
+        </ul>
 
-            <h4 style="margin-top: 1.5rem;">Payment:</h4>
-            <p>A 50% deposit is required to begin work, with the remaining balance due upon completion before pickup/delivery.</p>
+        <h4 style="margin-top: 1.5rem">Materials:</h4>
+        <p>
+          All crowns are made with high-quality materials including [list your
+          typical materials: wire, flowers, crystals, fabric, etc.]. Specific
+          materials can be discussed during consultation.
+        </p>
 
-            <h4 style="margin-top: 1.5rem;">Cancellation Policy:</h4>
-            <p>Deposits are non-refundable once work has begun. Cancellations made 48+ hours before the scheduled completion date may receive a partial refund.</p>
+        <h4 style="margin-top: 1.5rem">Payment:</h4>
+        <p>
+          A 50% deposit is required to begin work, with the remaining balance
+          due upon completion before pickup/delivery.
+        </p>
 
-            <h4 style="margin-top: 1.5rem;">Care Instructions:</h4>
-            <p>Each crown comes with care instructions to help preserve its beauty. Handle with care and store in provided box when not in use.</p>
-        </div>
+        <h4 style="margin-top: 1.5rem">Cancellation Policy:</h4>
+        <p>
+          Deposits are non-refundable once work has begun. Cancellations made
+          48+ hours before the scheduled completion date may receive a partial
+          refund.
+        </p>
+
+        <h4 style="margin-top: 1.5rem">Care Instructions:</h4>
+        <p>
+          Each crown comes with care instructions to help preserve its beauty.
+          Handle with care and store in provided box when not in use.
+        </p>
+      </div>
     </section>
 
     <footer>
-        <p>&copy; 2025 Royal Creations - Handmade Personalized Crowns</p>
-        <p>Contact: [Your Email] | [Your Phone]</p>
+      <p>&copy; 2025 Royal Creations - Handmade Personalized Crowns</p>
+      <p>Contact: [Your Email] | [Your Phone]</p>
     </footer>
 
     <script>
-        // Set minimum date to 2 weeks from today
-        const dateInput = document.getElementById('date');
-        const today = new Date();
-        const minDate = new Date(today.setDate(today.getDate() + 14));
-        dateInput.min = minDate.toISOString().split('T')[0];
+      // Set minimum date to 2 weeks from today
+      const dateInput = document.getElementById('date')
+      const today = new Date()
+      const minDate = new Date(today.setDate(today.getDate() + 14))
+      dateInput.min = minDate.toISOString().split('T')[0]
 
-        // File upload handling
-        const fileUploadArea = document.getElementById('fileUploadArea');
-        const fileInput = document.getElementById('photos');
-        const filePreview = document.getElementById('filePreview');
+      // File upload handling
+      const fileUploadArea = document.getElementById('fileUploadArea')
+      const fileInput = document.getElementById('photos')
+      const filePreview = document.getElementById('filePreview')
 
-        fileUploadArea.addEventListener('click', () => fileInput.click());
+      let selectedFiles = []
 
-        fileInput.addEventListener('change', function(e) {
-            filePreview.innerHTML = '';
-            const files = Array.from(e.target.files).slice(0, 3);
-            
-            if (files.length !== 3) {
-                alert('Please upload exactly 3 photos');
-                fileInput.value = '';
-                return;
-            }
+      fileUploadArea.addEventListener('click', () => fileInput.click())
 
-            files.forEach(file => {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    filePreview.appendChild(img);
-                };
-                reader.readAsDataURL(file);
-            });
-        });
+      fileInput.addEventListener('change', function (e) {
+        const newFiles = Array.from(e.target.files)
 
-        // Form submission
-        document.getElementById('crownOrderForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Check if 3 photos uploaded
-            if (fileInput.files.length !== 3) {
-                alert('Please upload exactly 3 inspiration photos');
-                return;
-            }
+        if (selectedFiles.length + newFiles.length > 3) {
+          alert('ניתן להעלות עד 3 תמונות השראה בלבד')
+          fileInput.value = ''
+          return
+        }
 
-            // Here you would integrate with an email service
-            // For now, we'll show a success message
-            alert('Thank you for your order! I will contact you within 24 hours to discuss your custom crown. Please check your email for confirmation.');
-            
-            // In production, integrate with services like:
-            // - Formspree (https://formspree.io/)
-            // - EmailJS (https://www.emailjs.com/)
-            // - Or a backend API
-            
-            this.reset();
-            filePreview.innerHTML = '';
-        });
+        newFiles.forEach((file) => {
+          selectedFiles.push(file)
 
-        // Smooth scrolling for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
+          const reader = new FileReader()
+          reader.onload = function (e) {
+            const img = document.createElement('img')
+            img.src = e.target.result
+            filePreview.appendChild(img)
+          }
+          reader.readAsDataURL(file)
+        })
+
+        // מאפשר לבחור שוב קבצים
+        fileInput.value = ''
+      })
+
+      // Form submission
+     document
+        .getElementById('crownOrderForm')
+        .addEventListener('submit', function (e) {
+          // לפחות תמונה אחת
+          if (selectedFiles.length === 0) {
+            e.preventDefault()
+            alert('Please upload at least one inspiration image.')
+            return
+          }
+
+          // הגנה נוספת – לא יותר מ-3
+          if (selectedFiles.length > 3) {
+            e.preventDefault()
+            alert('You may upload up to 3 inspiration images only.')
+            return
+          }
+          const dataTransfer = new DataTransfer()
+          selectedFiles.forEach((file) => dataTransfer.items.add(file))
+          fileInput.files = dataTransfer.files
+          // הודעת הצלחה (Formspree כן ישלח)
+          alert('Thank you for the order! I’ll get in touch with you within 24 hours 💜')
+        })
+
+      // Smooth scrolling for navigation
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault()
+          const target = document.querySelector(this.getAttribute('href'))
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }
+        })
+      })
     </script>
-</body>
+  </body>
 </html>
